@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>fliptoggle</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg id="mainSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 600">
+	<defs>
+
+		<clipPath id="btnMask">
+			<rect class="btnMask" x="300" y="250" width="100" height="100" fill="#D5DEEA" rx="50" stroke="#CDD9E7" stroke-width="0" />
+			</clipPath>
+		<filter  id="darkGlow" x="-100%" y="-100%" width="250%" height="250%">
+			<feGaussianBlur stdDeviation="13" result="coloredBlur" />
+			<feOffset dx="10" dy="10" result="offsetblur"></feOffset>
+			<feFlood id="glowAlpha" flood-color="#829BB5" flood-opacity="0.41"></feFlood>
+			<feComposite in2="offsetblur" operator="in"></feComposite>
+			<feMerge>
+				<feMergeNode />
+				<feMergeNode in="SourceGraphic"></feMergeNode>
+			</feMerge>
+		</filter>
+<filter  id="darkGlow_a" x="-100%" y="-100%" width="250%" height="250%">
+			<feGaussianBlur stdDeviation="13" result="coloredBlur" />
+			<feOffset dx="10" dy="10" result="offsetblur"></feOffset>
+			<feFlood id="glowAlpha" flood-color="#829BB5" flood-opacity="0"></feFlood>
+			<feComposite in2="offsetblur" operator="in"></feComposite>
+			<feMerge>
+				<feMergeNode />
+				<feMergeNode in="SourceGraphic"></feMergeNode>
+			</feMerge>
+		</filter>
+		<filter  id="lightGlow" x="-100%" y="-100%" width="250%" height="250%">
+			<feGaussianBlur stdDeviation="13" result="coloredBlur" />
+			<feOffset dx="-10" dy="-10" result="offsetblur"></feOffset>
+			<feFlood id="glowAlpha" flood-color="#FFF" flood-opacity="0.41"></feFlood>
+			<feComposite in2="offsetblur" operator="in"></feComposite>
+			<feMerge>
+				<feMergeNode />
+				<feMergeNode in="SourceGraphic"></feMergeNode>
+			</feMerge>
+		</filter>
+	<filter  id="lightGlow_a" x="-100%" y="-100%" width="250%" height="250%">
+			<feGaussianBlur stdDeviation="13" result="coloredBlur" />
+			<feOffset dx="-10" dy="-10" result="offsetblur"></feOffset>
+			<feFlood id="glowAlpha" flood-color="#FFF" flood-opacity="0"></feFlood>
+			<feComposite in2="offsetblur" operator="in"></feComposite>
+			<feMerge>
+				<feMergeNode />
+				<feMergeNode in="SourceGraphic"></feMergeNode>
+			</feMerge>
+		</filter>
+
+	
+		<filter  id="innerShadow1" x0="-50%" y0="-50%">
+			<feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur" />
+			<feOffset dx="20" dy="20" />
+			<feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff" />
+			<feFlood flood-color="#829BB5" class="buttonFlood" flood-opacity="0" />
+			<feComposite in2="shadowDiff" operator="in" />
+			<feComposite in2="SourceGraphic" operator="over" />
+		</filter>
+	<filter  id="innerShadow1_a" x0="-50%" y0="-50%">
+			<feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur" />
+			<feOffset dx="20" dy="20" />
+			<feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff" />
+			<feFlood flood-color="#829BB5" class="buttonFlood_a" flood-opacity="0.24" />
+			<feComposite in2="shadowDiff" operator="in" />
+			<feComposite in2="SourceGraphic" operator="over" />
+		</filter>
+
+		<filter  id="innerShadow2" x0="-50%" y0="-50%">
+			<feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur" />
+			<feOffset dx="-10" dy="-10" />
+			<feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff" />
+			<feFlood flood-color="#FFF" class="buttonFlood" flood-opacity="0" />
+			<feComposite in2="shadowDiff" operator="in" />
+			<feComposite in2="SourceGraphic" operator="over" />
+		</filter>
+	<filter  id="innerShadow2_a" x0="-50%" y0="-50%">
+			<feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur" />
+			<feOffset dx="-10" dy="-10" />
+			<feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff" />
+			<feFlood flood-color="#FFF" class="buttonFlood_a" flood-opacity="0.24" />
+			<feComposite in2="shadowDiff" operator="in" />
+			<feComposite in2="SourceGraphic" operator="over" />
+		</filter>
+	</defs>
+		<filter  id="innerShadow3" x0="-50%" y0="-50%">
+			<feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
+			<feOffset dx="0" dy="2" />
+			<feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff" />
+			<feFlood flood-color="#111" class="buttonFloodxxx" flood-opacity="0.15" />
+			<feComposite in2="shadowDiff" operator="in" />
+			<feComposite in2="SourceGraphic" operator="over" />
+		</filter>
+	
+
+	<g filter="url(#lightGlow)" >
+		<g filter="url(#darkGlow)">
+			<g filter="url(#innerShadow2)">
+				<g class="on" filter="url(#innerShadow1)" clip-path="url(#btnMask)">
+					<rect class="btn1" x="300" y="250" width="100" height="100" fill="#D5DEEA" rx="50" stroke="#CDD9E7" stroke-width="0" />
+					
+				</g>
+			</g>
+		</g>
+	</g>
+<g filter="url(#lightGlow_a)" >
+		<g filter="url(#darkGlow_a)">
+			<g filter="url(#innerShadow2_a)">
+				<g class="off" filter="url(#innerShadow1_a)" transform="translate(120)"  clip-path="url(#btnMask)">
+					<rect class="btn2" x="300" y="250" width="100" height="100" fill="#D5DEEA" rx="50" stroke="#CDD9E7" stroke-width="0" />
+					<circle class="dot" cx="350" cy="300"  fill="#D5FFEA" r="10"/>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g filter="url(#innerShadow3)">
+					<rect class="bg" x="280" y="230" width="260" height="140" fill="transparent" rx="70" stroke="#CDD9E7" stroke-width="14" />
+		</g>
+</svg>
+
+<script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/Flip.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
